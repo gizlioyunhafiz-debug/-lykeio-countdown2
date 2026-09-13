@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<title>Lykeio Countdown 🇬🇷</title>
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display",sans-serif;background:linear-gradient(160deg,#08111f,#102b4d);color:#fff;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px}
+.card{width:min(430px,100%);text-align:center;padding:34px 20px 28px;border-radius:30px;background:rgba(255,255,255,.09);backdrop-filter:blur(18px);box-shadow:0 20px 60px rgba(0,0,0,.3)}
+.flag{font-size:42px}.small{font-size:14px;opacity:.7;margin-top:10px}.title{font-size:25px;font-weight:800;margin:18px 0 25px}.main{font-size:58px;font-weight:900;letter-spacing:-2px}.label{font-size:13px;opacity:.65;text-transform:uppercase;letter-spacing:2px;margin-bottom:20px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px}.box{background:rgba(255,255,255,.08);border-radius:18px;padding:15px 8px}.num{font-size:28px;font-weight:800}.unit{font-size:11px;opacity:.6;margin-top:4px}
+.note{font-size:11px;opacity:.5;margin-top:25px;line-height:1.5}
+</style></head>
+<body>
+<div class="card">
+<div class="flag">🇬🇷</div>
+<div class="small">ΛΥΚΕΙΟ</div>
+<div class="title">Μέχρι να κλείσουν τα σχολεία</div>
+<div class="main" id="weeks">--</div><div class="label">εβδομάδες</div>
+<div class="grid">
+<div class="box"><div class="num" id="days">--</div><div class="unit">ΗΜΕΡΕΣ</div></div>
+<div class="box"><div class="num" id="hours">--</div><div class="unit">ΩΡΕΣ</div></div>
+<div class="box"><div class="num" id="mins">--</div><div class="unit">ΛΕΠΤΑ</div></div>
+<div class="box"><div class="num" id="secs">--</div><div class="unit">ΔΕΥΤΕΡΟΛΕΠΤΑ</div></div>
+</div>
+<div class="note">Στόχος: 15 Μαΐου 2027*<br>*Η επίσημη ημερομηνία για το σχολικό έτος 2026–2027 μπορεί να αλλάξει όταν ανακοινωθεί από το Υπουργείο Παιδείας.</div>
+</div>
+<script>
+const target=new Date("2027-05-15T00:00:00+03:00").getTime();
+function tick(){
+ let d=Math.max(0,target-Date.now()), s=Math.floor(d/1000);
+ let days=Math.floor(s/86400), weeks=Math.floor(days/7);
+ let hours=Math.floor((s%86400)/3600), mins=Math.floor((s%3600)/60), secs=s%60;
+ document.getElementById("weeks").textContent=weeks;
+ document.getElementById("days").textContent=days;
+ document.getElementById("hours").textContent=hours;
+ document.getElementById("mins").textContent=mins;
+ document.getElementById("secs").textContent=secs;
+}
+tick();setInterval(tick,1000);
+</script>
+</body></html>
